@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil de Usuario</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .usuario-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .usuario-info {
+            margin-bottom: 10px;
+        }
+        .label {
+            font-weight: bold;
+            width: 120px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Perfil de Usuario</h1>
+
+    <!-- Container para mostrar la información del usuario -->
+    <div th:if="${usuario}" class="usuario-container">
+        <!-- Nombre del usuario -->
+        <div class="usuario-info">
+            <span class="label">Nombre:</span>
+            <span th:text="${usuario.nombre}"></span>
+        </div>
+        
+        <!-- Email del usuario -->
+        <div class="usuario-info">
+            <span class="label">Email:</span>
+            <span th:text="${usuario.email}"></span>
+        </div>
+        
+        <!-- Insignia del usuario -->
+        <div class="usuario-info">
+            <span class="label">Insignia:</span>
+            <span th:text="${usuario.insignia.nombre}"></span>
+        </div>
+    </div>
+    
+    <!-- Mensaje si el usuario no se encuentra -->
+    <div th:unless="${usuario}" class="usuario-container">
+        <p>Usuario no encontrado.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Listado de Actores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #002h;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Listado de Actores</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Pais</th>
+                <th>Biografía</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="actor : ${actores}">
+                <td th:text="${actor.id}"></td>
+                <td th:text="${actor.nombre}"></td>
+                <td th:text="${actor.pais}"></td>
+                <td th:text="${actor.biografia}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

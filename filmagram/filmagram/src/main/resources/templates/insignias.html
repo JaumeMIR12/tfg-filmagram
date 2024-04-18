@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Listado de Insignias</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Listado de Insignias</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Puntuación Mínima</th>
+                <th>Icono</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="insignia : ${insignias}">
+                <td th:text="${insignia.id}"></td>
+                <td th:text="${insignia.nombre}"></td>
+                <td th:text="${insignia.puntuacionMinima}"></td>
+                <td>
+                    <img th:src="${insignia.iconoUrl}" width="50" height="50" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

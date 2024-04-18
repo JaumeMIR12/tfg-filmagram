@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Lista de Películas con Directores</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/mithril/mithril.js"></script>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header {
+    font-size: 24px; /* Tamaño grande de fuente */
+    text-align: center; /* Centrado horizontal del texto */
+    padding: 20px 0; /* Espaciado interno superior e inferior */
+    color: #333; /* Color del texto */
+    background-color: #f8f8f8; /* Color de fondo */
+    border-bottom: 2px solid #333; /* Borde inferior sólido */
+}
+
+.movie-table-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    font-size: 24px; /* Tamaño grande de fuente */
+    text-align: center; /* Centrado horizontal del texto */
+    padding: 20px 0; /* Espaciado interno superior e inferior */
+    color: #f8f8f8; /* Color del texto */
+    background-color: #333; /* Color de fondo */
+    border-bottom: 2px solid #333; /* Borde inferior sólido */
+}
+
+tr:hover {
+    background-color: #f9f9f9;
+}
+        
+    </style>
+</head>
+<body>
+<h2>Listado de peliculas</h2>
+    <div id="app" class="movie-table-container" ></div>
+    
+    
+    
+    <script src="js/peliculas.js"></script>
+
+</body>
+</html>

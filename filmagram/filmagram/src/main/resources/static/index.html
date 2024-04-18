@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Lista de Películas con Directores</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/peliculas.js"></script>
+    <style>
+    body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: rgb(27, 26, 26);
+    color: white;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: black;
+    color: white;
+}
+
+.logo img {
+    width: 40px; /* Ajusta el tamaño de la imagen del logo según sea necesario */
+    height: auto;
+    margin-right: 10px;
+}
+
+.logo h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+nav {
+    flex-grow: 1; /* Ocupa el espacio restante */
+    display: flex;
+    justify-content: center;
+    font-family: Graphik-Regular-Web, sans-serif; /* Centra los elementos horizontalmente */
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    text-decoration: none;
+    color: white;
+}
+
+nav ul li {
+    margin-right: 20px;
+    color: #CCCCCC;
+    text-decoration: none;
+    color: white;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    text-decoration: none;
+    color: white;
+    color: #CCCCCC; /* Cambia el color al pasar el cursor sobre los enlaces */
+}
+
+.content-wrap {
+    margin: 0 auto;
+    width: 1270px;
+}
+
+section {
+background-color: rgb(27, 26, 26);
+padding: 20px; /* Añadir un relleno opcional para separar el contenido del borde */
+    border: 1px solid #ccc; /* Borde sólido con color gris claro */
+    border-radius: 8px; /* Redondear las esquinas del contenedor */
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 2);
+    margin-top: 10px;
+}
+    
+    .section {
+        padding: 6 0 2.46153846rem;
+    position: relative;
+    }
+    
+    .section-heading {
+    border-bottom: 1px solid #456;
+    color: #9ab;
+    font-family: Graphik-Regular-Web, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: .075em;
+    margin-bottom: .76923077rem;
+    margin-top: 0;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 18px;
+    margin: 18px 0 12px;
+}
+
+.section-heading a {
+    color: #9ab;
+}
+
+a {
+    color: #678;
+    text-decoration: none;
+}
+
+a:-webkit-any-link {
+    cursor: pointer;
+}
+
+.poster-list.-horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: -10px;
+    margin-right: 10px;
+}
+
+.poster-list {
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    unicode-bidi: isolate;
+}
+
+.poster-list.-p150.-horizontal .poster, .poster-list.-p150.-horizontal .poster-container {
+    margin-bottom: 0;
+}
+.poster-list.-p150 .padme-pad, .poster-list.-p150 .poster-container {
+    width: 150px;
+}
+.poster-list.-horizontal>.live-poster, .poster-list.-horizontal>.poster, .poster-list.-horizontal>.poster-container {
+    display: block;
+    margin-left: 10px;
+}
+
+.poster-container.viewing-poster-container {
+    border-radius: 0;
+}
+.poster, .poster-container {
+    background-clip: padding-box;
+    border-radius: var(--poster-border-radius-clamped);
+    display: inline-block;
+    position: relative;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    unicode-bidi: isolate;
+    font-size: inherit;
+    line-height: 1.38461538;
+}
+
+.poster-viewingdata {
+    clear: both;
+    color: rgb(198, 200, 203);
+    font-size: .92307692rem;
+    line-height: 16px;
+    margin-bottom: 0;
+    overflow: hidden;
+    padding-top: 3px;
+}
+p {
+    line-height: 1.5;
+    margin-bottom: 1em;
+}
+
+.poster.-attributed .attribution-block {
+    background: #456;
+    bottom: 0;
+    box-sizing: border-box;
+    clear: both;
+    display: block;
+    margin: 0;
+    overflow: hidden;
+    padding: 5px;
+    position: absolute;
+    white-space: nowrap;
+    width: 100%;
+}
+.no-mobile .attribution-block {
+    display: flex;
+}
+.attribution-block {
+    color: #678;
+    font-size: 0;
+    position: relative;
+}
+
+.no-mobile .attribution-block>.attribution {
+    flex-grow: 1;
+}
+.attribution-block>.attribution {
+    display: inline-block;
+    font-size: .92307692rem;
+    line-height: 18px;
+    margin: 0;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+.attribution-block>.attribution .context, .attribution-block>.attribution .name {
+    display: inline-block;
+    margin-right: 5px;
+}
+.attribution-block>.attribution .context .name, .attribution-block>.attribution .name {
+    font-family: Graphik-Semibold-Web, sans-serif;
+    font-weight: 400;
+}
+
+
+
+.poster-viewingdata time {
+    display: block;
+    float: right;
+    padding-bottom: 2px;
+}
+
+.section-heading {
+    border-bottom: 1px solid #456;
+    color: #9ab;
+    font-family: Graphik-Regular-Web, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: .075em;
+    margin-bottom: .76923077rem;
+    margin-top: 0;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.section:first-child {
+    padding-top: 0;
+}
+
+.section-heading a {
+    color: #9ab;
+}
+
+.all-link {
+    color: #678;
+    font-size: 11px;
+    letter-spacing: .075em;
+    position: absolute;
+    right: 0;
+    text-transform: uppercase;
+    top: 3px;
+    white-space: nowrap;
+}
+
+.modal {
+    display: none; /* Oculta la ventana modal por defecto */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5); /* Fondo semitransparente */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.subnav{
+    display: none;
+}
+
+.toggle-menu:hover {
+    display: block;
+}
+    </style>
+   </head>
+   <body>
+   
+   <header>
+    <div class="logo">
+        <img src="pictures/small_logo.png" alt="Filmagram Logo">
+        <h1>Filmagram</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="#">Buscar</a></li>
+            <li><a href="#">Películas</a></li>
+            <li><a href="#" class="has-icon toggle-menu"><span class="icon"></span><span class="avatar -a24" data-js-user-avatar="true"><img src="https://a.ltrbxd.com/resized/avatar/upload/8/0/2/2/6/2/8/shard/avtr-0-48-0-48-crop.jpg?v=605778caa0" alt="JauMir" width="24" height="24"></span>Perfil</a>
+                <ul class="subnav">
+                    <li>
+                        <a href="#" class="has-icon toggle-menu"><span class="icon"></span>
+                            <span class="avatar -a24" data-js-user-avatar="true">
+                                <img src="https://a.ltrbxd.com/resized/avatar/upload/8/0/2/2/6/2/8/shard/avtr-0-48-0-48-crop.jpg?v=605778caa0" alt="JauMir" width="24" height="24"></span>JauMir</a></li><li class="divider"><a href="/">Home</a></li><li><a href="/JauMir/">Profile</a></li><li><a href="/JauMir/films/">Films</a></li><li><a href="/JauMir/films/diary/">Diary</a></li><li><a href="/JauMir/films/reviews/">Reviews</a></li><li><a href="/JauMir/watchlist/">Watchlist</a></li><li><a href="/JauMir/lists/">Lists</a></li><li><a href="/JauMir/likes/">Likes</a></li><li><a href="/JauMir/tags/">Tags</a></li><li><a href="/JauMir/following/">Network</a></li><li class="divider"><a href="/settings/">Settings</a></li><li><a href="/settings/subscriptions/">Subscriptions</a></li><li><a id="sign-out" href="#" class="ajax-click-action" data-action="/user/logout.do">Sign Out</a></li></ul>
+            </li>
+            <li><a href="#">Nuevo</a></li>
+            <li><a href="#">Reviews</a></li>
+            <li><a href="#">Jugar</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="content-wrap">
+<section id="recent-from-friends" class="section">
+			
+					
+					<h2 class="section-heading"><a href="/peliculas.html">Ahora en Filmagram</a></h2>
+					<a href="/activity/" class="has-icon icon-16 icon-activity all-link">Tu actividad</a>
+				
+			<ul id="lista1" class="poster-list -p150 -horizontal">
+			
+			</ul>
+		</section>
+		
+		<section id="popular-with-everyone" class="section">
+				
+				<h2 class="section-heading"><a href="/films/popular/this/week/">Popular en Filmagram</a></h2>
+				<a href="/films/popular/this/week/" class="all-link">Mas</a>
+				<ul id="lista2" class="poster-list -p150 film-list -horizontal">
+					
+				</ul>
+			</section>
+
+        <section id="popular-with-everyone" class="section">
+				
+            <h2 class="section-heading"><a href="/films/popular/this/week/">Reciente en Filmagram</a></h2>
+            <ul id="lista3" class="poster-list -p150 film-list -horizontal">
+                
+            </ul>
+        </section>
+    </div>
+    
+
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>¡Hola! Esta es una ventana modal.</p>
+            </div>
+        </div>
+   </body>
+   </html>

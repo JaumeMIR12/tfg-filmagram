@@ -1,0 +1,3 @@
+Se inicia en localhost:8080.
+
+las rutas del controlador de springboot son las rutas a lo que devuelve json como una api. y luego los templates html llaman a esos json y lo muestran en html.

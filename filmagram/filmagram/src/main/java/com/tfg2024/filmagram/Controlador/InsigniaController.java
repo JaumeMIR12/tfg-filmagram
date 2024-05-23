@@ -11,7 +11,7 @@ import com.tfg2024.filmagram.Servicio.InsigniaService;
 import java.util.List;
 import java.util.Optional;
 
-@Controller
+@RestController
 @RequestMapping("/api/insignias")
 public class InsigniaController {
 	
@@ -33,6 +33,11 @@ public class InsigniaController {
     @GetMapping("/{insigniaId}")
     public Optional<Insignia> getInsigniaById(@PathVariable("insigniaId") Long id) {
         return insigniaService.getInsignia(id);
+    }
+    
+    @PostMapping("/update/{puntuacionObtenida}/insignia/{usuarioId}")
+    public Insignia modificarInsigniaUsuario(@PathVariable("usuarioId") Long usuarioId, @PathVariable("puntuacionObtenida") Integer puntuacionObtenida) {
+    	return insigniaService.getUpdateInsignia(usuarioId, puntuacionObtenida);
     }
 
 }

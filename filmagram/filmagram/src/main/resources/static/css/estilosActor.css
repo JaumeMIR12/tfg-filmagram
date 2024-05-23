@@ -1,0 +1,219 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: rgb(27, 26, 26);
+    color: white;
+}
+
+a {
+color: #678;
+text-decoration: none;
+}
+
+a:-webkit-any-link {
+cursor: pointer;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: black;
+    color: white;
+}
+
+.logo img {
+    width: 40px;
+    /* Ajusta el tamaño de la imagen del logo según sea necesario */
+    height: auto;
+    margin-right: 10px;
+}
+
+.logo h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+nav {
+    flex-grow: 1;
+    /* Ocupa el espacio restante */
+    display: flex;
+    justify-content: center;
+    font-family: Graphik-Regular-Web, sans-serif;
+    /* Centra los elementos horizontalmente */
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    text-decoration: none;
+    color: white;
+}
+
+nav ul li {
+    margin-right: 20px;
+    color: #CCCCCC;
+    text-decoration: none;
+    color: white;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    text-decoration: none;
+    color: white;
+    color: #CCCCCC;
+    /* Cambia el color al pasar el cursor sobre los enlaces */
+}
+
+.subnav {
+    display: block;
+    background: #89a;
+    border-radius: 2px;
+    box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, .35), 0 0 10px #000;
+    display: none;
+    min-width: 100px;
+    padding-bottom: 5px;
+    position: absolute;
+    z-index: 10000;
+}
+
+.subnav:hover .subnav,
+.subnav:hover {
+    display: block;
+}
+
+.has-icon.toggle-menu:hover+.subnav {
+    display: block;
+}
+
+#content {
+    background-color: #14181c;
+    padding: 30px 0;
+}
+
+.section:first-child {
+    padding-top: 0;
+}
+
+.col-17 {
+    margin: auto;
+    width: 60%;
+}
+
+.col-pelis {
+    text-align: center;
+    width: 90%;
+}
+
+.section {
+    padding: 0 0 2.46153846rem;
+    position: relative;
+}
+
+.page-header {
+    border-bottom: 1px solid #456;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.contextual-title {
+    margin-bottom: 1.53846154rem;
+}
+
+#content-nav {
+    border-bottom: 1px solid #456;
+    color: #678;
+    font-size: 11px;
+    line-height: 1;
+    margin: -16px 0 15px;
+    min-height: 30px;
+    position: relative;
+}
+
+.smenu-wrapper.smenu-wrapper-left {
+    float: left;
+}
+
+#content-nav .sorting-selects.has-hide-toggle {
+    right: 0;
+}
+
+#content-nav .sorting-selects {
+    position: absolute;
+    right: -8px;
+    top: 0;
+    z-index: 0;
+}
+
+.poster-grid {
+    --poster-grid-gap-column: 10px;
+    --poster-grid-gap-row: 10px;
+    --poster-grid-col-size: 150px;
+    container-type: inline-size;
+    container-name: grid;
+    position: relative;
+    z-index: 0;
+}
+
+.poster-grid>.grid {
+    -moz-column-gap: var(--poster-grid-gap-column);
+    column-gap: var(--poster-grid-gap-column);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, var(--poster-grid-col-size));
+    row-gap: var(--poster-grid-gap-row);
+}
+
+.poster-container {
+    background-clip: padding-box;
+    border-radius: var(--poster-border-radius-clamped);
+    display: inline-block;
+    position: relative;
+}
+
+.poster, .poster-container {
+background-clip: padding-box;
+border-radius: var(--poster-border-radius-clamped);
+display: inline-block;
+position: relative;
+}
+
+
+.poster-grid>.grid>.griditem .poster .image {
+aspect-ratio: 2 / 3;
+height: auto;
+width: 100%;
+}
+
+.frame-title {
+display: none; /* Ocultar el span inicialmente */
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color: rgba(0, 0, 0, 0.7);
+color: white;
+padding: 5px 10px;
+z-index: 1; /* Para que esté sobre la imagen */
+}
+
+/* Cambiar el borde de la imagen cuando se hace hover en el enlace */
+.tooltip.griditem.poster-container:hover img {
+border: 3px solid green; /* Cambiar el color del borde y su grosor */
+}
+
+.tooltip.griditem.poster-container:hover .frame-title {
+display: block;
+}

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Buscador de Películas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/mithril/mithril.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/estilosBuscadorPelis.css">
+    <script src="js/navegador.js" defer></script>
+</head>
+
+<body>
+<header>
+    <div class="logo">
+        <img src="pictures/small_logo.png" alt="Filmagram Logo">
+        <h1><a href="/index.html">Filmagram</a></h1>
+    </div>
+    <nav id="nav"></nav>
+    <!-- <nav>
+        <ul>
+            <li><a href="/buscador.html">Buscar</a></li>
+            <li><a href="/peliculasBuscador.html">Películas</a></li>
+            <li><a href="#" class="has-icon toggle-menu">Perfil</a>
+                <ul class="subnav">
+                    <li class="divider">
+                        <a href="/">
+                            Perfil
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/JauMir/">
+                            Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/JauMir/films/">
+                            Películas
+                        </a>
+                    </li>
+                    <li>
+                    	<a href="/JauMir/watchlist/">
+                    		Watchlist
+                    	</a>
+                    </li>
+                    <li>
+                    	<a href="/JauMir/lists/">
+                    		Favoritas
+                    	</a>
+                    </li>
+                    <li>
+                    	<a href="/JauMir/likes/">
+                    		Comentarios
+                    	</a>
+                    </li>
+                    <li>
+                    	<a href="/settings/subscriptions/">
+                    		Partidas
+                    	</a>
+                    </li>
+                    <li>
+                    	<a id="sign-out" href="#" class="ajax-click-action" data-action="/user/logout.do">
+                    	Sign Out
+                    </a>
+                    </li>
+              	</ul>
+            </li>
+            <li><a href="#">Nuevo</a></li>
+            <li><a href="#">Reviews</a></li>
+            <li><a href="#">Jugar</a></li>
+        </ul>
+    </nav> -->
+</header>
+    <div id="app"></div>
+
+    <script>
+
+        const buscarPeliculas = async (filtro) => {
+            try {
+                const response = await m.request({
+                    method: 'POST',
+                    url: 'api/peliculas/buscar',
+                    body: {
+                        titulo: filtro.titulo,
+                        estreno: filtro.estreno,
+                        genero: filtro.genero,
+                        calificacion: filtro.calificacion
+                    },
+                });
+                return response;
+            } catch (error) {
+                console.error('Error al buscar películas:', error);
+                throw error;
+            }
+        };
+
+        const App = {
+            filtro: {
+                titulo: null,
+                estreno: null,
+                genero: null,
+                calificacion: null
+            },
+            peliculas: [],
+            async buscar() {
+                try {
+                    const peliculas = await buscarPeliculas(this.filtro);
+                    console.log(peliculas);
+                    this.peliculas = peliculas;
+                } catch (error) {
+                    console.error('Error al buscar películas:', error);
+                }
+            },
+            oninit: () => {
+                const currentYear = new Date().getFullYear();
+                const years = Array.from({ length: currentYear - 1899 }, (v, i) => 1900 + i).reverse();
+                App.years = years;
+            },
+            view() {
+                return m('div.browse-by', [
+                    m('h1.section-heading', 'Buscador de Películas'),
+                    m('input.bar-nav', {
+                        id: 'titulo',
+                        placeholder: 'Título',
+                        oninput: (e) => this.filtro.titulo = e.target.value,
+                    }),
+                    m('select.bar-nav', {
+                        id: 'estreno',
+                        onchange: (e) => this.filtro.estreno = parseInt(e.target.value),
+                    }, [
+                        m('option.bar-nav', { value: null }, 'Año de Estreno'),
+                        App.years.map(year => m('option', { value: year }, year))
+                    ]),
+                    m('select.bar-nav', {
+                        id: 'genero',
+                        onchange: (e) => this.filtro.genero = e.target.value,
+                    }, [
+                        m('option', { value: null }, 'Género'),
+                        m('option', { value: 'Acción' }, 'Acción'),
+                        m('option', { value: 'Comedia' }, 'Comedia'),
+                        m('option', { value: 'Ciencia ficción' }, 'Ciencia ficción'),
+                        m('option', { value: 'Drama' }, 'Drama')
+                        // Agregar más opciones de géneros según sea necesario
+                    ]),
+                    m('select.bar-nav', {
+                        id: 'calificacion',
+                        onchange: (e) => this.filtro.calificacion = e.target.value,
+                    }, [
+                        m('option', { value: null }, 'Ordenar por Calificación'),
+                        m('option', { value: 'high' }, 'Calificaciones más altas'),
+                        m('option', { value: 'low' }, 'Calificaciones más bajas'),
+                    ]),
+                    m('button.bar-nav', { onclick: () => this.buscar() }, 'Buscar'),
+                    m('ul#top-movies', [
+                        this.peliculas.map(pelicula =>
+                            m('li', [
+
+                                m('ul', [
+                                    m('li.position', pelicula[0]),
+                                    m('li.content', [
+                                        m('.movie-card.mc-flex.movie-card-0', { 'data-movie-id': pelicula[0] }, [
+                                            m('.mc-poster', [
+                                                m('a', {
+                                                    href: '#', // Enlace temporal para evitar que navegue
+                                                    onclick: (e) => {
+                                                        e.preventDefault();
+                                                        localStorage.setItem('peliculaId', pelicula[0]);
+                                                        window.location.href = '/perfilPelicula.html'; // Redirigir a la página deseada
+                                                    }
+                                                }, [
+                                                    m('img', {
+                                                        src: pelicula[6],
+                                                        alt: pelicula[1],
+                                                        width: '100',
+                                                        height: ''
+                                                    })
+                                                ])
+                                            ]),
+                                            m('.mc-info-container', [
+                                                
+                                                m('.d-flex', [
+                                                m('.mc-title', [
+                                                    m('a', {
+                                                    href: '#', // Enlace temporal para evitar que navegue
+                                                    onclick: (e) => {
+                                                        e.preventDefault();
+                                                        localStorage.setItem('peliculaId', pelicula[0]);
+                                                        window.location.href = '/perfilPelicula.html'; // Redirigir a la página deseada
+                                                    }
+                                                }, pelicula[1])
+                                                ]),
+                                                    m('.types-wrapper', [
+                                                        m('span.type', pelicula[3])
+                                                    ]),
+                                                    m('span.nflag', pelicula[10] ),
+                                                    m('.mc-year', pelicula[4])
+                                                ]), m('.mc-director', [
+                                                    m('.credits', [
+                                                        m('span.nb', [
+                                                            m('a.nombredirector', {
+                                                                href: '#', // Enlace temporal para evitar que navegue
+                                                                onclick: (e) => {
+                                                                    e.preventDefault();
+                                                                    localStorage.setItem('directorId', pelicula[5]);
+                                                                    window.location.href = '/perfilDirector.html'; // Redirigir a la página deseada
+                                                                }
+                                                            }, pelicula[9])
+                                                        ])
+                                                    ])
+                                                ]),
+                                                m('.mc-cast')
+
+                                            ]),
+                                            m('.mc-actions'),
+                                            m('.lists-box')
+                                        ])
+                                    ]),
+                                    m('li.data', [
+                                        m('.avg-rating', pelicula[7]),
+                                        m('.rat-count', [
+                                            pelicula[8],
+                                            m('i.fa.fa-simple-user-o-fa')
+                                        ])
+                                    ])
+                                ])
+                            ])
+
+                        )
+
+                    ]),
+                ]);
+            },
+        };
+
+        m.mount(document.getElementById("app"), App);
+
+
+
+    </script>
+
+    <ul id="top-movies">
+        
+        
+    </ul>
+</body>
+
+</html>

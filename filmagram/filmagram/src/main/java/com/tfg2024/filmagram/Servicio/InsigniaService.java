@@ -23,5 +23,24 @@ public class InsigniaService {
     public Optional<Insignia> getInsignia(Long id) {
         return insigniaRepository.findById(id);
     }
+    
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+    
+    public Insignia getUpdateInsignia(Long usuarioId, Integer puntuacionObtenida) {
+    	String updateSql = "UPDATE Usuarios SET insignia_id = ( SELECT id " +
+                "    FROM Insignias " +
+                "    WHERE puntuacion_minima <= ? " +
+                "    ORDER BY puntuacion_minima DESC " +
+                "    LIMIT 1" +
+                ") " +
+                "WHERE id = ?";
+    	
+    	jdbcTemplate.update(updateSql, puntuacionObtenida, usuarioId);
+    	
+    	Insignia insignia = insigniaRepository.findInsigniaUsuario(usuarioId);
+    	
+    	return insignia;
+    }
 
 }

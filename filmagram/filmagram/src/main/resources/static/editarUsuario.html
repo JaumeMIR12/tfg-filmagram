@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Editar Usuario</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verifica si los valores necesarios están en localStorage
+            if (!localStorage.getItem('username') || !localStorage.getItem('usuarioId')) {
+                // Si no están, redirige a la página de error
+                window.location.href = 'error.html';
+            }
+        });
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/mithril/mithril.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/estilosPerfilUsuario.css">
+
+    <script src="js/navegador.js" defer></script>
+    <script src="js/editarUsuario.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="pictures/small_logo.png" alt="Filmagram Logo">
+            <h1><a href="/index.html">Filmagram</a></h1>
+            <p id="mensaje-registro"></p>
+        </div>
+        <nav id="nav"></nav>
+    </header>
+    <div id="formulario-editar"></div>
+    <!-- <form>
+        <h2 class="mob-hide" style="margin-bottom:1em">Tu Perfil</h2>
+        <div class="col-10 overflow">
+            <section class="update-details section">
+                <fieldset>
+                    <label class="mob-subtitle title-hero">Editar</label>
+
+                    <div class="app-available-settings js-hide-in-app">
+                        <input type="hidden" name="completeSettings" value="true">
+                        
+                        <div class="form-row">
+                                    <label for="frm-reg-username">Nombre de usuario</label>
+                                    
+                                    <input type="text" name="username" id="frm-reg-username" class="frm-reg-username field ac_input"  disabled="disabled" value="JauMir" autocomplete="off">
+                                
+                        </div>
+                                <div class="form-row js-email-address-field">
+                                    <label>Correo electrónico</label>
+                                    <input type="email" name="emailAddress" id="frm-email-address" class="field" inputmode="email" autocorrect="off" autocapitalize="off" value="jaumirher@gmail.com">
+                                </div>
+
+                                <div class="form-row js-password-field">
+                                    <label>Contraseña</label>
+                                    <input type="password" name="password" id="frm-password" class="field" inputmode="password" autocorrect="off" autocapitalize="off" value="">
+                                </div>
+                    
+                </fieldset>
+            </section>
+        </div>
+    </form> -->
+</body>
+</html>

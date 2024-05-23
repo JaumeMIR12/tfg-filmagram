@@ -1,0 +1,443 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: rgb(27, 26, 26);
+    color: white;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: black;
+    color: white;
+}
+
+.logo img {
+    width: 40px;
+    /* Ajusta el tamaño de la imagen del logo según sea necesario */
+    height: auto;
+    margin-right: 10px;
+}
+
+.logo h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+nav {
+    flex-grow: 1;
+    /* Ocupa el espacio restante */
+    display: flex;
+    justify-content: center;
+    font-family: Graphik-Regular-Web, sans-serif;
+    /* Centra los elementos horizontalmente */
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    text-decoration: none;
+    color: white;
+}
+
+nav ul li {
+    margin-right: 20px;
+    color: #CCCCCC;
+    text-decoration: none;
+    color: white;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    text-decoration: none;
+    color: white;
+    color: #CCCCCC;
+    /* Cambia el color al pasar el cursor sobre los enlaces */
+}
+
+.content-wrap {
+    margin: 0 auto;
+    width: 1270px;
+}
+
+section {
+    background-color: rgb(27, 26, 26);
+    padding: 20px;
+    /* Añadir un relleno opcional para separar el contenido del borde */
+    border: 1px solid #ccc;
+    /* Borde sólido con color gris claro */
+    border-radius: 8px;
+    /* Redondear las esquinas del contenedor */
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 2);
+    margin-top: 10px;
+}
+
+.section {
+    padding: 6 0 2.46153846rem;
+    position: relative;
+}
+
+.section-heading {
+    color: #9ab;
+    font-family: Graphik-Regular-Web, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: .075em;
+    margin-bottom: .76923077rem;
+    margin-top: 10px;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 18px;
+    margin: 18px 0 12px;
+}
+
+.section-heading a {
+    color: #9ab;
+}
+
+a {
+    color: #678;
+    text-decoration: none;
+}
+
+a:-webkit-any-link {
+    cursor: pointer;
+}
+
+.poster-list.-horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-left: -10px;
+    margin-right: 10px;
+}
+
+.poster-list {
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+    unicode-bidi: isolate;
+}
+
+.poster-list.-p150.-horizontal .poster,
+.poster-list.-p150.-horizontal .poster-container {
+    margin-bottom: 0;
+}
+
+.poster-list.-p150 .padme-pad,
+.poster-list.-p150 .poster-container {
+    width: 150px;
+}
+
+.poster-list.-horizontal>.live-poster,
+.poster-list.-horizontal>.poster,
+.poster-list.-horizontal>.poster-container {
+    display: block;
+    margin-left: 10px;
+}
+
+.poster-container.viewing-poster-container {
+    border-radius: 0;
+}
+
+.poster,
+.poster-container {
+    background-clip: padding-box;
+    border-radius: var(--poster-border-radius-clamped);
+    display: inline-block;
+    position: relative;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    unicode-bidi: isolate;
+    font-size: inherit;
+    line-height: 1.38461538;
+}
+
+.poster-viewingdata {
+    clear: both;
+    color: rgb(198, 200, 203);
+    font-size: .92307692rem;
+    line-height: 16px;
+    margin-bottom: 0;
+    overflow: hidden;
+    padding-top: 3px;
+}
+
+p {
+    line-height: 1.5;
+    margin-bottom: 1em;
+    color: #678;
+}
+
+.poster.-attributed .attribution-block {
+    background: #456;
+    bottom: 0;
+    box-sizing: border-box;
+    clear: both;
+    display: block;
+    margin: 0;
+    overflow: hidden;
+    padding: 5px;
+    position: absolute;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.no-mobile .attribution-block {
+    display: flex;
+}
+
+.attribution-block {
+    color: #678;
+    font-size: 0;
+    position: relative;
+}
+
+.no-mobile .attribution-block>.attribution {
+    flex-grow: 1;
+}
+
+.attribution-block>.attribution {
+    display: inline-block;
+    font-size: .92307692rem;
+    line-height: 18px;
+    margin: 0;
+    max-width: 100%;
+    vertical-align: middle;
+}
+
+.attribution-block>.attribution .context,
+.attribution-block>.attribution .name {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.attribution-block>.attribution .context .name,
+.attribution-block>.attribution .name {
+    font-family: Graphik-Semibold-Web, sans-serif;
+    font-weight: 400;
+}
+
+
+
+.poster-viewingdata time {
+    display: block;
+    float: right;
+    padding-bottom: 2px;
+}
+
+.section:first-child {
+    padding-top: 0;
+}
+
+.section-heading a {
+    color: #9ab;
+}
+
+.all-link {
+    color: #678;
+    font-size: 11px;
+    letter-spacing: .075em;
+    position: absolute;
+    right: 0;
+    text-transform: uppercase;
+    top: 3px;
+    white-space: nowrap;
+}
+
+.modal {
+    display: none;
+    /* Oculta la ventana modal por defecto */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fondo semitransparente */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.subnav {
+    display: block;
+    background: #89a;
+    border-radius: 2px;
+    box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, .35), 0 0 10px #000;
+    display: none;
+    min-width: 100px;
+    padding-bottom: 5px;
+    position: absolute;
+    z-index: 10000;
+}
+
+.subnav:hover .subnav,
+.subnav:hover {
+    display: block;
+}
+
+.has-icon.toggle-menu:hover+.subnav {
+    display: block;
+}
+
+
+#highlights {
+    padding-bottom: 3.07692308rem;
+    margin-top: 12px;
+}
+
+.tagline {
+    font-family: Graphik-Regular-Web, sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: .075em;
+    line-height: 1.53846154;
+    margin: 20px 0 10px;
+    text-transform: uppercase;
+}
+
+.highlights {
+    align-items: top;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.highlights a.panel {
+    border: none;
+    box-shadow: inset 0 1px 0 hsla(0, 0%, 100%, .1);
+    box-sizing: border-box;
+    display: block;
+    margin-bottom: 10px;
+    width: 290px;
+}
+
+.big-icon.-watch,
+.big-icon.-watch .icon {
+    background-position: -500px -510px;
+}
+
+.highlights .icon img {
+    float: left;
+    height: 47px;
+    margin: 0;
+    position: relative;
+    top: 5px;
+    width: 50px;
+}
+
+.highlights a.panel p {
+    color: #def;
+    margin: 0 0 0 65px;
+    padding-top: 5px;
+}
+
+.promopanel:hover .promopanel {
+    background-color: green;
+
+}
+
+.promopanel {
+    background: #456;
+    padding: 16px 20px 18px;
+}
+
+.promopanel p {
+    font-size: 14px;
+    margin: 0;
+}
+
+
+
+/* form*/
+.modal-content {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+input[type="text"],
+input[type="password"],
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+input[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+input[type="submit"]:hover {
+    background-color: #45a049;
+}

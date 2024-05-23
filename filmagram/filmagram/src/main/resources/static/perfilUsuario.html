@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Perfil Usuario</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verifica si los valores necesarios están en localStorage
+            if (!localStorage.getItem("userVisited")) {
+                // Si no están, redirige a la página de error
+                window.location.href = 'error.html';
+            }
+        });
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/mithril/mithril.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/estilosPerfilUsuario.css">
+
+    <script src="js/navegador.js" defer></script>
+    <script src="js/mostrarUsuario.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="pictures/small_logo.png" alt="Filmagram Logo">
+            <h1><a href="/index.html">Filmagram</a></h1>
+            <p id="mensaje-registro"></p>
+        </div>
+        <nav id="nav"></nav>
+    </header>
+
+    <div class="content-wrap">
+
+
+        <div id="section1"></div>
+
+        <div class="col-16">
+            <div id="section-peliculas-vistas"></div>
+
+
+            <div id="section-peliculas-favoritas"></div>
+
+            <div id="section-peliculas-quierover"></div>
+
+        </div>
+    </div>
+</body>
+
+</html>

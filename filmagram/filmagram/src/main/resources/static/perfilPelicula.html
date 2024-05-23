@@ -1,13 +1,198 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <title>Lista de Películas con Directores</title>
+    <title>Comentarios</title><script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verifica si los valores necesarios están en localStorage
+            if (!localStorage.getItem('peliculaId')) {
+                // Si no están, redirige a la página de error
+                window.location.href = 'error.html';
+            }
+        });
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/mostrarPelicula.js"></script>
-    
-   </head>
-   <body>
-   <div id="resultado" ></div>
-    </body>
-   </html>
+    <script src="https://unpkg.com/mithril/mithril.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/estilosPelicula.css">
+    <script src="js/navegador.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="pictures/small_logo.png" alt="Filmagram Logo">
+            <h1><a href="/index.html">Filmagram</a></h1>
+        </div>
+        <nav id="nav"></nav>
+    </header>
+
+    <div class="content-wrap">
+        <div class="film-page-wrapper" class="cols-3 overflow">
+            <div class="col-6 gutter-right-1 col-poster-large" id="js-poster-col">
+
+
+
+
+                 <!-- <section class="poster-list -p230 -single no-hover el col">
+                    <a data-js-trigger="postermodal"
+                        href="https://a.ltrbxd.com/resized/sm/upload/iw/eg/4g/nm/3w79tTsv6tmlT8Jww6snyPrgVok-0-1000-0-1500-crop.jpg?v=778c7ae8b8"
+                        target="_blank">
+                        <div class="react-component poster film-poster film-poster-110740" data-film-id="110740"
+                            data-film-name="Prisoners">
+                            <div><img
+                                    src="https://a.ltrbxd.com/resized/sm/upload/iw/eg/4g/nm/3w79tTsv6tmlT8Jww6snyPrgVok-0-230-0-345-crop.jpg?v=778c7ae8b8"
+                                    width="230" height="345" alt="Prisoners" class="image"></div>
+                        </div>
+                    </a>
+                    <ul class="film-stats">
+                        <li class="stat filmstat-watches"><a href="/film/prisoners/members/"
+                                class="has-icon icon-watched icon-16 tooltip"
+                                data-original-title="Watched by 1,422,003&nbsp;members"><span
+                                    class="icon"></span>1.4M</a></li>
+                        <li class="stat filmstat-likes"><a href="/film/prisoners/likes/"
+                                class="has-icon icon-like icon-liked icon-16 tooltip"
+                                data-original-title="Liked by 529,572&nbsp;members"><span class="icon"></span>530K</a>
+                        </li>
+                    </ul>
+
+
+                </section> -->
+
+            </div>
+            <div class="col-17" id="result">
+                <!--
+                <section id="featured-film-header" class="film-header-lockup -default">
+                    <h1 class="headline-1 js-widont prettify">Prisoners</h1>
+                    <p>
+                        <small class="number"><a href="/films/year/2013/">2013</a></small>
+                        Directed by <a href="/director/denis-villeneuve/"><span class="prettify">Denis
+                                Villeneuve</span></a>
+
+
+                    </p>
+                </section>
+
+                <section class="section col-10 col-main">
+
+                    <section>
+
+                        <div class="review body-text -prose -hero prettify">
+
+                            <div class="truncate" data-truncate="450">
+                                <p>When Keller Dover’s daughter and her friend go missing, he takes matters into his own
+                                    hands as the police pursue multiple leads and the pressure mounts. But just how far
+                                    will this desperate father go to protect his&nbsp;family?</p>
+                            </div>
+
+                        </div>
+
+
+                    </section>
+                    <div id="tabbed-content" data-selected-tab="">
+
+                        <div id="tab-details" class="tabbed-content-block column-block">
+
+                            <h3><span>Country</span></h3>
+                            <div class="text-sluglist">
+                                <p>
+                                    <a href="/films/country/usa/" class="text-slug">USA</a>
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div id="tab-genres" class="tabbed-content-block column-block">
+
+                            <h3><span>Genres</span></h3>
+                            <div class="text-sluglist capitalize">
+                                <p>
+                                    <a href="/films/genre/thriller/" class="text-slug">Thriller</a> <a
+                                        href="/films/genre/crime/" class="text-slug">Crime</a> <a
+                                        href="/films/genre/drama/" class="text-slug">Drama</a>
+                                </p>
+                            </div>
+
+                        </div>
+
+
+
+
+                    </div>
+
+
+                </section> -->
+                <div id="info-pelicula">
+
+                </div>
+
+                <div id="reparto">
+
+                </div>
+
+                <div id="aside">
+
+                </div>
+
+                <!-- <aside class="sidebar">
+                    <section id="userpanel" class="actions-panel">
+                        <ul class="js-actions-panel">
+                            <li class="panel-signin">
+                                <a href="/sign-in/" class="signin-text-link">Inicia sesión para opinar o calificar.</a>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section class="section ratings-histogram-chart">
+                        <h2 class="section-heading"><a href="/film/prisoners/ratings/" class=""
+                                title="">Calificaciones</a>
+                        </h2> numero de personas <span class="average-rating"> <a href="#"
+                                class="tooltip display-rating -highlight">4.3</a>
+                        </span>
+                    </section>
+
+                </aside> -->
+
+                <div id="comentarios-zona">
+
+                </div>
+                <!-- <section class="film-recent-reviews -clear">
+                    <section id="popular-reviews" class="film-reviews section"
+                        data-url="/ajax/prisoners/popular-reviews/" data-how-many="12">
+
+                        <h2 class="section-heading"><a href="/film/prisoners/reviews/by/activity/">Comentarios</a>
+                        </h2>
+                        <ul class="film-popular-review">
+
+                            <li class="film-detail" data-viewing-id="14240511" data-person="ghouliasyelps">
+                                <div class="film-detail-content">
+                                    <div class="attribution-block -large">
+                                        <p class="attribution"> <a href="/ghouliasyelps/film/prisoners/" class="context"
+                                                title="Read feat. dante from the dmc series’s review"> Comentario de
+                                                <strong class="name">nombre usuarios</strong> </a> <span
+                                                class="rating -green rated-9"> calificacion</span> </p>
+                                    </div>
+                                    <div class="body-text -prose collapsible-text"
+                                        data-full-text-url="/s/full-text/viewing:14240511/">
+                                        <p>COMENTARIO QUE HAYA ESCRITO</p>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </section>
+
+
+                </section> -->
+
+
+            </div>
+
+        </div>
+    </div>
+</body>
+<script src="js/mostrarPelicula.js"></script>
+
+</html>

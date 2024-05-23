@@ -24,7 +24,7 @@ public class Usuario {
     private String email;
 	
 	@Column(nullable = false)
-    private String password;
+    private String contraseña;
 	
 	@ManyToOne
     @JoinColumn(name = "insignia_id")
@@ -54,12 +54,12 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getContraseña() {
+        return contraseña;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setContraseña(String ontraseña) {
+        this.contraseña = ontraseña;
     }
 
     public Insignia getInsignia() {

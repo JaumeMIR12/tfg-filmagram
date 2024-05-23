@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Director</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verifica si los valores necesarios están en localStorage
+            if (!localStorage.getItem('actorId')) {
+                // Si no están, redirige a la página de error
+                window.location.href = 'error.html';
+            }
+        });
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/mithril/mithril.js"></script>
+    <script src="js/mostrarActor.js"></script>
+    <script src="js/navegador.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="css/estilosActor.css">
+</head>
+
+<body>
+    <div id="content">
+        <header>
+            <div class="logo">
+                <img src="pictures/small_logo.png" alt="Filmagram Logo">
+                <h1><a href="/index.html">Filmagram</a></h1>
+            </div>
+            <nav id="nav">
+            </nav>
+        </header>
+
+        <div id="app">
+        </div>
+
+        <div id="segs" style="margin: auto;
+        width: 50%;
+        text-align: center;">
+
+        </div>
+        
+        <div id="peliculas-sec"></div>
+
+        <!-- <section class="section col-17 col-main">
+            <header class="page-header">
+                <div class="contextual-title">
+                    <h1 class="title-1 prettify">
+                        <span class="context">
+
+                            Films directed by
+
+                        </span>
+                        Denis Villeneuve
+                    </h1>
+                </div>
+            </header>
+
+
+            <div id="content-nav" class="hide-toggle-menu">
+                <section class="smenu-wrapper smenu-wrapper-left">
+                    <div class="smenu"> <label>Director<i class="ir s icon"></i></label> </div>
+                </section>
+                <div class="sorting-selects has-hide-toggle">
+                    <section class="smenu-wrapper hide-toggle-menu">
+                        <div class="smenu"> <label><span class="ir s hide-toggle-icon">Visibility Filters</span><i
+                                    class="ir s icon"></i></label> </div>
+                    </section>
+                    <section class="smenu-wrapper"> <strong class="smenu-label">Sort by</strong>
+                        <div class="smenu"> <label>Popularity<i class="ir s icon"></i></label> </div>
+                    </section>
+
+                    <section class="smenu-wrapper">
+                        <div class="smenu"> <label>Service<i class="ir s icon"></i> </label> </div>
+                    </section>
+                    <section class="smenu-wrapper">
+                        <div class="smenu"> <label> Genre<i class="ir s icon"></i> </label> </div>
+                    </section>
+                    <section class="smenu-wrapper">
+                        <div class="smenu"> <label class="x"> Decade<i class="ir s icon"></i> </label> </div>
+                    </section>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+
+
+
+
+
+
+
+            <div class="poster-grid">
+                <ul class="grid -grid -p125 -constrained clear">
+
+                    <li class="tooltip griditem poster-container" data-original-title="Dune (2021)">
+                        <div class="react-component poster film-poster film-poster-371378 dune-eye linked-film-poster"
+                            data-component-class="globals.comps.FilmPosterComponent" data-film-id="371378"
+                            data-film-name="Dune" data-film-slug="dune-2021"
+                            data-poster-url="/film/dune-2021/image-150/" data-film-release-year="2021"
+                            data-new-list-with-film-action="/list/new/with/dune-2021/"
+                            data-remove-from-watchlist-action="/film/dune-2021/remove-from-watchlist/"
+                            data-add-to-watchlist-action="/film/dune-2021/add-to-watchlist/"
+                            data-rate-action="/film/dune-2021/rate/"
+                            data-mark-as-watched-action="/film/dune-2021/mark-as-watched/"
+                            data-mark-as-not-watched-action="/film/dune-2021/mark-as-not-watched/"
+                            data-film-link="/film/dune-2021/">
+                            <div><img
+                                    src="https://a.ltrbxd.com/resized/sm/upload/nx/8b/vs/gc/cDbNAY0KM84cxXhmj8f0dLWza3t-0-150-0-225-crop.jpg?v=49eed12751"
+                                    width="150" height="225" alt="Dune"
+                                    srcset="https://a.ltrbxd.com/resized/sm/upload/nx/8b/vs/gc/cDbNAY0KM84cxXhmj8f0dLWza3t-0-300-0-450-crop.jpg?v=49eed12751 2x"
+                                    class="image"><a href="/film/dune-2021/" class="frame"><span
+                                        class="frame-title">Dune (2021)</span><span class="overlay"></span></a></div>
+                        </div>
+
+                    </li>
+
+
+                </ul>
+            </div>
+
+
+        </section> -->
+    </div>
+</body>
+
+</html>
